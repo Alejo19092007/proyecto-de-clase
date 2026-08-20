@@ -6,11 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class );
 
-Route::get('/product', [ProductController::class , 'index']);
+Route::prefix('product')->controller(ProductController::class)->group(function () {
+    
 
-
-Route::get('/product/create', [ProductController::class , 'create']);
-
-
-
-Route::get('/product/{idProduct}', [ProductController::class , 'show']);
+Route::get('/product',  'index');
+Route::get('/product/create',  'create');
+Route::get('/product/{idProduct}',  'show');
+});
