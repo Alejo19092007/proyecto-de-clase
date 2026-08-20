@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Support\ProductCatalog;
 
 class HomeController extends Controller
 {
     public function __invoke()
     {
-        return "My landing page";
+        return view('home', [
+            'featured' => ProductCatalog::featured(4),
+            'categories' => ProductCatalog::categories(),
+            'total' => count(ProductCatalog::all()),
+        ]);
     }
 }
