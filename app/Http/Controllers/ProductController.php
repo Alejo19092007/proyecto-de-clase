@@ -19,7 +19,7 @@ class ProductController extends Controller
             ));
         }
 
-        return view('index', [
+        return view('product.index', [
             'products' => $products,
             'categories' => ProductCatalog::categories(),
             'activeCategory' => $category,
@@ -28,7 +28,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('create', [
+        return view('product.create', [
             'categories' => ProductCatalog::categories(),
         ]);
     }
@@ -39,7 +39,7 @@ class ProductController extends Controller
 
         abort_unless($product, 404);
 
-        return view('show', [
+        return view('product.show', [
             'product' => $product,
             'related' => ProductCatalog::related($product),
         ]);

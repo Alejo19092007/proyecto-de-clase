@@ -36,14 +36,14 @@
         </div>
     </div>
 
-    @if (session('success'))
-        <div class="container">
-            <div class="flash-success">{{ session('success') }}</div>
-        </div>
-    @endif
-
     <main class="site-main">
-        @yield('content')
+        <div class="container">
+            @if (session('success'))
+                <div class="flash-success">{{ session('success') }}</div>
+            @endif
+
+            @yield('content')
+        </div>
     </main>
 
     <footer class="site-footer">

@@ -645,3 +645,11 @@ input:focus, select:focus, textarea:focus {
     .main-nav { display: none; }
     .form-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- Utilidades de layout para las vistas ---------- */
+.btn-back { margin-bottom: 32px; }
+
+.section-head.spaced { margin-top: 70px; }
+
+.page-intro h2 { margin: 10px 0 8px; }
+.page-intro p { max-width: 60ch; margin-bottom: 30px; }

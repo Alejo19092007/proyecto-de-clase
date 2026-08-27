@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="hero">
-        <div class="container hero-grid">
+        <div class="hero-grid">
             <div class="reveal in-view">
                 <span class="eyebrow">// Tecnología del mañana, hoy</span>
                 <h1>El futuro se <span class="grad">compra</span> en NEXUS TECH</h1>
@@ -40,49 +40,46 @@
     </section>
 
     <section class="section">
-        <div class="container">
-            <div class="section-head reveal">
-                <div>
-                    <span class="eyebrow">Selección</span>
-                    <h2>Destacados de la semana</h2>
-                </div>
-                <a href="{{ route('product.index') }}" class="btn btn-ghost btn-sm">Ver todo el catálogo</a>
+        <div class="section-head reveal">
+            <div>
+                <span class="eyebrow">Selección</span>
+                <h2>Destacados de la semana</h2>
             </div>
+            <a href="{{ route('product.index') }}" class="btn btn-ghost btn-sm">Ver todo el catálogo</a>
+        </div>
 
-            <div class="product-grid" data-reveal-group>
-                @foreach ($featured as $product)
-                    <a href="{{ route('product.show', $product['id']) }}" class="card reveal">
-                        <div class="card-media">
-                            <span class="card-cat">{{ $product['category'] }}</span>
-                            <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}">
+        <div class="product-grid" data-reveal-group>
+            @foreach ($featured as $product)
+                <a href="{{ route('product.show', $product['id']) }}" class="card reveal">
+                    <div class="card-media">
+                        <span class="card-cat">{{ $product['category'] }}</span>
+                        <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}">
+                    </div>
+                    <div class="card-body">
+                        <h3>{{ $product['name'] }}</h3>
+                        <p>{{ $product['short'] }}</p>
+                        <div class="card-footer">
+                            <span class="price">${{ number_format($product['price'], 2) }}</span>
+                            <span class="btn btn-ghost btn-sm">Ver más</span>
                         </div>
-                        <div class="card-body">
-                            <h3>{{ $product['name'] }}</h3>
-                            <p>{{ $product['short'] }}</p>
-                            <div class="card-footer">
-                                <span class="price">${{ number_format($product['price'], 2) }}</span>
-                                <span class="btn btn-ghost btn-sm">Ver más</span>
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
+                    </div>
+                </a>
+            @endforeach
         </div>
     </section>
 
     <section class="section">
-        <div class="container">
-            <div class="section-head reveal">
-                <div>
-                    <span class="eyebrow">Explora</span>
-                    <h2>Por categoría</h2>
-                </div>
+        <div class="section-head reveal">
+            <div>
+                <span class="eyebrow">Explora</span>
+                <h2>Por categoría</h2>
             </div>
-            <div class="chip-row reveal">
-                @foreach ($categories as $category)
-                    <a href="{{ route('product.index', ['category' => $category]) }}" class="chip">{{ $category }}</a>
-                @endforeach
-            </div>
+        </div>
+
+        <div class="chip-row reveal">
+            @foreach ($categories as $category)
+                <a href="{{ route('product.index', ['category' => $category]) }}" class="chip">{{ $category }}</a>
+            @endforeach
         </div>
     </section>
 @endsection
